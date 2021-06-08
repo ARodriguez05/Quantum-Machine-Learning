@@ -1,5 +1,6 @@
 import NeuralNetwork as NN
 import pennylane as qml
+import tensorflow as tf
 
 class QuantumNeuralNetwork(NN.NeuralNetwork):
     def __init__(self, xs_data, ys_data, number_of_qubits=8, number=None, convolutional=0):
