@@ -15,9 +15,12 @@ ___How to use the simulator :___ To run the simulator, just launch the file "mai
 
 # Results
 
+
 You'll find published here the current results for n-bits binary decryption with the parameters required to achieve such results.
 
-  * __2-bits XOR decryption :__ Encryption was done over 100 epochs with the following key -> [1,0]
+---
+
+  * __2-bits XOR decryption :__ Encryption was done over 100 epochs with the following key -> [1,0]. The dataset was the 2-bit built-in preset.
      * _Classic Networks specs_
          * loss function : Mean Squared
          * optimizer : Adam (learning rate = 0.08)
@@ -34,5 +37,24 @@ You'll find published here the current results for n-bits binary decryption with
          * optimizer : Adam (learning rate = 0.05)
          * accuracy : 100%
 
+---
+  * __4-bits XOR decryption :__ Encryption was done over 100 epochs with the following key -> [1, 0, 1, 0]. The dataset was the 4-bit built-in preset.
+     * _Classic Networks specs_
+         * loss function : Mean Squared
+         * optimizer : Adam (learning rate = 0.07)
+         * training time : 0.54s
+         * accuracy : 80~100%
 
-  * __4-bits XOR decryption :__ _Coming soon..._
+     * _Convolutional Networks specs_
+         * loss function : Mean Squared
+         * optimizer : Adam (learning rate = 0.07)
+         * training time : 0.567s
+         * number of filters : 10
+         * accuracy : 88%
+
+     * _Quantum Networks specs_
+         * loss function : Mean Squared
+         * optimizer : Adam (learning rate = 0.04)
+         * training time : 64.315s
+         * number of layers : 6
+         * accuracy : 72%
