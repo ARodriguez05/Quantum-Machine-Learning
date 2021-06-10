@@ -58,3 +58,25 @@ You'll find published here the current results for n-bits binary decryption with
          * training time : 64.315s
          * number of layers : 6
          * accuracy : 72%
+
+---
+  * __8-bits XOR decryption :__ Encryption was done over 100 to 200 epochs with the following key -> [1, 0, 0, 1, 1, 1, 0, 0]. The dataset was the 8-bit built-in preset.
+     * _Classic Networks specs_
+         * loss function : Mean Squared
+         * optimizer : Adam (learning rate = 0.07)
+         * training time : ~0.6s
+         * accuracy : 82~88%
+
+     * _Convolutional Networks specs_
+         * loss function : Mean Squared
+         * optimizer : Adam (learning rate = 0.07)
+         * training time : ~0.5s
+         * number of filters : 10
+         * accuracy : 85~91%
+
+     * _Quantum Networks specs_
+         * loss function : Mean Squared
+         * optimizer : Adam (learning rate = 0.06)
+         * training time : ~300s
+         * number of layers : 7
+         * accuracy : 78%
