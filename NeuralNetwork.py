@@ -20,7 +20,7 @@ class NeuralNetwork:
             self.name = "Convolutional "+self.name
             self.xs_data = tf.reshape(xs_data, self.input_shape)
             self.ys_data = tf.reshape(ys_data, self.input_shape)
-            model.append(tf.keras.layers.Conv1D(filters=8, kernel_size=1, strides=1, input_shape=self.input_shape))
+            model.append(tf.keras.layers.Conv1D(filters=10, kernel_size=1, strides=1, input_shape=self.input_shape))
         else :
             self.xs_data = xs_data
             self.ys_data = ys_data
@@ -29,7 +29,7 @@ class NeuralNetwork:
         model.append(tf.keras.layers.Dense(units=sample_size, input_shape=[sample_size]))
         self.model = tf.keras.Sequential(model)
 
-        self.optimizer = tf.keras.optimizers.Adam(learning_rate=0.03)
+        self.optimizer = tf.keras.optimizers.Adam(learning_rate=0.07)
         self.loss = tf.keras.losses.MeanSquaredError()
         self.model.compile(optimizer=self.optimizer, loss=self.loss)
 
@@ -84,9 +84,9 @@ class NeuralNetwork:
     #Get the overall accuracy of the network on the database. For binary arrays it generates all the possible arrays.
     def evaluateTotalAccuracy(self):
         self.total_accuracy = 0
-        number_of_samples = len(self.xs_data)*len(self.xs_data)
+        number_of_samples = len(self.xs_data[0])*len(self.xs_data[0])
         for i in range(0, number_of_samples, 1):
-            sample = toolkit.convertToByte(i, len(self.xs_data))
+            sample = toolkit.convertToByte(i, len(self.xs_data[0]))
             self.total_accuracy += self.prediction(sample, get_output=1,verbose=0)
         self.total_accuracy/=number_of_samples
         return self.total_accuracy

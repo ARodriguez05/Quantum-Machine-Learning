@@ -21,7 +21,7 @@ class QuantumNeuralNetwork(NN.NeuralNetwork):
             #qml.templates.StronglyEntanglingLayers(weights, wires=range(number_of_qubits))
             qml.templates.BasicEntanglerLayers(weights, wires=range(number_of_qubits))
             return [qml.expval(qml.PauliZ(wires=i)) for i in range(number_of_qubits)]
-        n_layers = 6 # 1 layer => 71% (15sec) | 10 layers => 50% (88sec)
+        n_layers = 7 # 1 layer => 71% (15sec) | 10 layers => 50% (88sec)
         weight_shapes = {"weights": (n_layers, number_of_qubits)}
         Quantum_Layer = qml.qnn.KerasLayer(qnode, weight_shapes, output_dim=number_of_qubits)
 
@@ -29,5 +29,5 @@ class QuantumNeuralNetwork(NN.NeuralNetwork):
         self.model = tf.keras.Sequential([
         Quantum_Layer,
         ])
-        self.optimizer = tf.keras.optimizers.Adam(learning_rate=0.005)
+        self.optimizer = tf.keras.optimizers.Adam(learning_rate=0.06)
         self.model.compile(optimizer=self.optimizer, loss=tf.keras.losses.MeanSquaredError())

@@ -6,7 +6,7 @@ import math
 def generateByteArray(array_length):
     byte_array = list([])
     for i in range(0, array_length, 1):
-        byte_array.append = random.randint(0,1)
+        byte_array.append(random.randint(0,1))
     return byte_array
 
 #Convert an integer to a binary array
@@ -14,7 +14,7 @@ def convertToByte(my_integer, byte_length):
     byte_array = list([])
     for i in range(0, byte_length, 1):
         byte_array.append(0)
-    pow_2_substract = 64
+    pow_2_substract = math.pow(2, 32)
     while(my_integer>0):
         if(my_integer-pow_2_substract >= 0):
             my_integer-=pow_2_substract
@@ -24,7 +24,7 @@ def convertToByte(my_integer, byte_length):
 
 #Binary XOR encryption
 def encrypt(bytes_array):
-    key_array = [1, 1, 1, 1, 1, 1, 1, 1] #old key : [1, 0, 0, 1, 1, 1, 0, 0]
+    key_array = convertToByte(72, 32) #old key : [1, 0, 1, 0, 1, 0, 1, 0]
     encrypted_array = list([])
     for i in range(0,len(bytes_array),1):
         encrypted_array.append((bytes_array[i]+key_array[i])%2)
@@ -58,7 +58,7 @@ def setSampleArrays(sample_size, batch_size=-1):
             data = generateByteArray(sample_size)
             x_data.append(encrypt(data))
             y_data.append(data)
-        xs = np.array([x_data], dtype=int)
-        ys = np.array([y_data], dtype=int)
+        xs = np.array(x_data, dtype=int)
+        ys = np.array(y_data, dtype=int)
 
     return xs, ys

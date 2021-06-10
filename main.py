@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import time
 
 import numpy as np
-import QuantumNeuralNetwork as qNN
+import QuantumNeuralNetwork as QNN
 import NeuralNetwork as NN
 import functions as toolkit
 
@@ -40,14 +40,17 @@ def Main():
     nb_networks = int(input("Choose how many neural networks you want to create for this simulation : "))
 
     sample_size = int(input("\n\nPlease enter the size of a batch's sample : "))
+    """
     while(sample_size != 2 and sample_size != 4 and sample_size != 8):
         print("/!\ There are currently only three samples sizes available : 2, 4 and 8. /!\ ")
         sample_size = int(input("Please enter the size of a batch's sample : "))
-
+    """
     batch_size_string = input("\n\nPlease enter the number of training samples you want to use.\nEnter \"default\" to use a preset : ")
     batch_size = None
     if batch_size_string == "default":
         batch_size = -1
+    else :
+        batch_size = int(batch_size_string)
 
     xs, ys = toolkit.setSampleArrays(sample_size, batch_size)
     for i in range(0, nb_networks, 1):
