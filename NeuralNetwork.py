@@ -84,9 +84,20 @@ class NeuralNetwork:
     #Get the overall accuracy of the network on the database. For binary arrays it generates all the possible arrays.
     def evaluateTotalAccuracy(self):
         self.total_accuracy = 0
-        number_of_samples = len(self.xs_data[0])*len(self.xs_data[0])
+        number_of_samples = None
+        sample = None
+
+        if self.convolutional:
+            number_of_samples = len((self.xs_data[0])[0])*len((self.xs_data[0])[0])
+        else :
+            number_of_samples = len(self.xs_data[0])*len(self.xs_data[0])
+
         for i in range(0, number_of_samples, 1):
-            sample = toolkit.convertToByte(i, len(self.xs_data[0]))
+            if self.convolutional :
+                sample = toolkit.convertToByte(i, len((self.xs_data[0])[0]))
+            else :
+                sample = toolkit.convertToByte(i, len(self.xs_data[0]))
             self.total_accuracy += self.prediction(sample, get_output=1,verbose=0)
+
         self.total_accuracy/=number_of_samples
         return self.total_accuracy
