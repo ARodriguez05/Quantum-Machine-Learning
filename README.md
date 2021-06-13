@@ -36,8 +36,10 @@ You'll find published here the current results for n-bits binary decryption with
          * loss function : Mean Squared
          * optimizer : Adam (learning rate = 0.05)
          * accuracy : 100%
-
+<details>
+  <summary> - Graphic of the loss function -</summary>
 <img src="https://user-images.githubusercontent.com/72410925/121705960-7681e080-cad5-11eb-8ea8-2473997f1b99.png">
+</details>
 
 ---
   * __4-bits XOR decryption :__ Encryption was done over 100 epochs with the following key -> [1, 0, 1, 0]. The dataset was the 4-bit built-in preset.
@@ -61,7 +63,11 @@ You'll find published here the current results for n-bits binary decryption with
          * training time : 64.315s
          * number of layers : 6
          * accuracy : 72%
+
+<details>
+  <summary> - Graphic of the loss function -</summary>
 <img src="https://user-images.githubusercontent.com/72410925/121704259-de372c00-cad3-11eb-8bde-00c57192057f.png">
+</details>
 
 ---
   * __8-bits XOR decryption :__ Encryption was done over 100 to 200 epochs with the following key -> [1, 0, 0, 1, 1, 1, 0, 0]. The dataset was the 8-bit built-in preset.
@@ -84,4 +90,8 @@ You'll find published here the current results for n-bits binary decryption with
          * training time : ~300s
          * number of layers : 7
          * accuracy : 78%
+
+<details>
+  <summary> - Graphic of the loss function -</summary>
 <img src="https://user-images.githubusercontent.com/72410925/121707141-9239b680-cad6-11eb-8302-6ff5ab7cfc77.png">
+</details>
