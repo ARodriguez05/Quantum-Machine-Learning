@@ -4,6 +4,15 @@
 
 ## Features
 
+___The different classes :___ You'll find 4 classes in this simulator :
+  * __main.py :__ The main class where examples are computed and evaluated, please refer to the part "How to use the simulator" to understand how to use the solution.
+
+  * __functions.py :__ Also named "toolkit", you'll find all the functions called for binary encryption/decryption or dataset's generation. You can choose any encryption key you want by modifying the variable "key_array" in the "encrypt" function. this class currently has a XOR binary encryption method.
+
+  * __NeuralNetwork.py :__ The file where is initialized the neural network. You can modify few parameters to adjust the network and optimize its training efficiency.
+
+  * __QuantumNeuralNetwork.py :__ The quantum counterpart of the previous class. It inherits the Neural Network's core functions called for the simulation in the main. The constructor is overridden to implement a specific quantum structure with variable depth (change the number of layers). It currently features basic and strong entanglement between qubits.
+
 ___How to use the simulator :___ To run the simulator, just launch the file "main.py" in any environment supporting Python3. You might need to install many libraries in your environment such as Tensorflow or Pennylane, please refer to their respective tutorials to prepare your setup. You'll be asked several parameters before running the simulation :
   * __Number of neural networks :__ You can either create one or several neural networks if you want to compare them on a specific dataset. You can modify their parameters (learning rate, loss function...) in their respective files "NeuralNetwork.py" and "QuantumNeuralNetwork.py" in the constructor of each class.
 
@@ -12,6 +21,12 @@ ___How to use the simulator :___ To run the simulator, just launch the file "mai
   * __Number of training samples :__ The number of samples you want to use for training. For binary encryption/decryption, you can use a built-in function to generate your binary arrays at random, specific arrays or use built-in datasets and see whereas your dataset contains too much data or not enough for your networks.
 
   * __Type of neural network :__ This is where your choose which neural network you want to simulate. It can either be a classic or quantum neural network and, in the case of a classic neural network, a regular one with a Dense layer only or a Convolutional network.
+
+## Patch note
+
+### v 1.0 (2021/06/14)
+
+This project can currently simulates up to 8-bits XOR decryption for any type of neural network featured (see #Results). You can also push further the simulation by choosing random datasets with binary arrays of up to 32 bits for **classic** and **convolutional** networks only. Quantum neural networks can decipher up to 10-bits long datasets but the training time is abysmal (almost 2 hours). Since those quantum networks can only rely on entanglement their performances are still quite underwhelming as compared to their classic counterparts (reaching almost 100% accuracy on lengthy datasets, convolutional networks will require more filters).
 
 ## Results
 
@@ -95,3 +110,5 @@ You'll find published here the current results for n-bits binary decryption with
   <summary> - Graphic of the loss function -</summary>
 <img src="https://user-images.githubusercontent.com/72410925/121707141-9239b680-cad6-11eb-8302-6ff5ab7cfc77.png">
 </details>
+
+
