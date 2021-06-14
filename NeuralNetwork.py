@@ -1,6 +1,15 @@
 import tensorflow as tf
 import functions as toolkit
 
+"""
+#------------------------- NETWORK PARAMETERS -------------------------#
+"""
+input_number_of_filters = 8
+input_learning_rate = 0.08
+"""
+#----------------------------------------------------------------------#
+"""
+
 class NeuralNetwork:
 
     #Class constructor
@@ -20,7 +29,7 @@ class NeuralNetwork:
             self.name = "Convolutional "+self.name
             self.xs_data = tf.reshape(xs_data, self.input_shape)
             self.ys_data = tf.reshape(ys_data, self.input_shape)
-            model.append(tf.keras.layers.Conv1D(filters=10, kernel_size=1, strides=1, input_shape=self.input_shape))
+            model.append(tf.keras.layers.Conv1D(filters=input_number_of_filters, kernel_size=1, strides=1, input_shape=self.input_shape))
         else :
             self.xs_data = xs_data
             self.ys_data = ys_data
@@ -29,7 +38,7 @@ class NeuralNetwork:
         model.append(tf.keras.layers.Dense(units=sample_size, input_shape=[sample_size]))
         self.model = tf.keras.Sequential(model)
 
-        self.optimizer = tf.keras.optimizers.Adam(learning_rate=0.07)
+        self.optimizer = tf.keras.optimizers.Adam(learning_rate=input_learning_rate)
         self.loss = tf.keras.losses.MeanSquaredError()
         self.model.compile(optimizer=self.optimizer, loss=self.loss)
 

@@ -24,7 +24,7 @@ def convertToByte(my_integer, byte_length):
 
 #Binary XOR encryption
 def encrypt(bytes_array):
-    key_array = convertToByte(72, 32) #old key : [1, 0, 1, 0, 1, 0, 1, 0]
+    key_array = convertToByte(4123456789, 32) #old key : [1, 0, 1, 0, 1, 0, 1, 0]
     encrypted_array = list([])
     for i in range(0,len(bytes_array),1):
         encrypted_array.append((bytes_array[i]+key_array[i])%2)
@@ -60,5 +60,4 @@ def setSampleArrays(sample_size, batch_size=-1):
             y_data.append(data)
         xs = np.array(x_data, dtype=int)
         ys = np.array(y_data, dtype=int)
-
     return xs, ys

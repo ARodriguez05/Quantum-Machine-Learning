@@ -12,6 +12,42 @@ import functions as toolkit
 
 np.random.seed(1234)
 
+#WIP
+def Overfitting_Example():
+    sample_size = 8
+    batch_size = 40
+    xs, ys = toolkit.setSampleArrays(sample_size, batch_size)
+
+    xs_training = xs[0:int(round(len(xs)*0.2))]
+    xs_verif = xs[int(round(len(xs)*0.2)):len(xs)]
+
+    ys_training = ys[0:int(round(len(ys)*0.2))]
+    ys_verif = ys[int(round(len(ys)*0.2)):len(ys)]
+
+    network = NN.NeuralNetwork(xs_training, ys_training, sample_size, convolutional=0)
+    network.trainModel(100)
+
+    plt.plot(network.training_data_results.history['loss'], label = network.name+" [Training]")
+    plt.title("Evolution of the loss function throughout the epochs.")
+    plt.xlabel("Epochs")
+    plt.ylabel("Loss")
+    plt.legend()
+    plt.show()
+
+    accuracy = 0.0
+    for sample in xs_training:
+        print(sample)
+        accuracy+=network.prediction(sample, get_output=1, verbose=0)
+    accuracy/=(len(xs_training)*0.01)
+    print("Accuracy on training sample : "+str(accuracy)+"%")
+
+    accuracy = 0.0
+    for sample in xs_verif:
+        accuracy+=network.prediction(sample, get_output=1, verbose=0)
+    accuracy/=(len(xs_verif)*0.01)
+    print("Accuracy on training sample : "+str(accuracy)+"%")
+    network.evaluateTotalAccuracy()
+
 def Classic_Main():
     xs, ys = setSampleArrays()
     network = NeuralNetwork(xs, ys)
